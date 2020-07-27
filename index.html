@@ -13,11 +13,23 @@
       <h3>{{title}}</h3>
       <div>
         <span class="titolo originale">{{original_title}}</span><br>
-        <span id="rating"></span>
-        <img id="flag" src="" alt="">
+        <span class="rating"></span>
+        <img class="flag" src="" alt="">
       </div>
      </div>
     </script>
+
+    <script id="series-template" type="text/x-handlebars-template">
+      <div class="serie" data-vote={{"vote_average"}} data-language={{original_language}} >
+      <h3>{{name}}</h3>
+      <div>
+        <span class="titolo originale">{{original_name}}</span><br>
+        <span class="rating"></span>
+        <img class="flag" src="" alt="">
+      </div>
+     </div>
+    </script>
+
 
     <script id="stars-template" type="text/x-handlebars-template">
       <h3>VOTO:
@@ -34,8 +46,14 @@
 
   <input id="search-bar" type="text" name="search" value="" placeholder="Cerca il film">
   <button id="search-btn" type="button" name="button">CERCA</button>
-
+  <h2>Film</h2>
   <div id="movies-list">
+
+
+  </div>
+  <h2>Serie tv</h2>
+  <div id="series-list">
+
 
   </div>
 
