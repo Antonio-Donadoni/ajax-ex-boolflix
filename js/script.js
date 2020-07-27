@@ -15,7 +15,7 @@ function getMovie() {
    data : {
     'api_key': '8a9865f75eca2ef944ceabef50501298',
     'query': query,
-    'language': "it_IT"
+    'language': "it-IT"
    },
 
    success: function(data) {
@@ -24,6 +24,7 @@ function getMovie() {
      for (var i = 0; i < moviesArray.length; i++) {
 
         var movie = moviesArray[i];
+
         var template = $('#movie-template').html();
         var compiled = Handlebars.compile(template);
         var target = $('#movies-list');
