@@ -8,9 +8,14 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.6/handlebars.min.js"></script>
     <link rel="stylesheet" href="css/main.css">
     <script src= "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/js/all.min.js"></script>
-    <script id="album-template" type="text/x-handlebars-template">
+    <script id="movie-template" type="text/x-handlebars-template">
       <li>
-        
+        <ul>
+          <li>TITOLO: {{title}}</li>
+          <li>TITOLO ORIGINALE: {{original_title}}</li>
+          <li>LINGUA: {{original_language}}</li>
+          <li>VOTO: {{vote_average}}</li>
+        </ul>
       </li>
     </script>
   </head>
