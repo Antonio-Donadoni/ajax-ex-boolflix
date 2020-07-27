@@ -9,14 +9,24 @@
     <link rel="stylesheet" href="css/main.css">
     <script src= "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/js/all.min.js"></script>
     <script id="movie-template" type="text/x-handlebars-template">
-      <li>
-        <ul>
-          <li>TITOLO: {{title}}</li>
-          <li>TITOLO ORIGINALE: {{original_title}}</li>
-          <li>LINGUA: {{original_language}}</li>
-          <li>VOTO: {{vote_average}}</li>
-        </ul>
-      </li>
+      <div class="movie" data-vote={{"vote_average"}} data-language={{original_language}} >
+      <h3>{{title}}</h3>
+      <div>
+        <span class="titolo originale">{{original_title}}</span><br>
+        <span id="rating"></span>
+        <img id="flag" src="" alt="">
+      </div>
+     </div>
+    </script>
+
+    <script id="stars-template" type="text/x-handlebars-template">
+      <h3>VOTO:
+         <i class='{{first-star}}'></i>
+         <i class='{{second-star}}'></i>
+         <i class='{{third-star}}'></i>
+         <i class='{{fourth-star}}'></i>
+         <i class='{{fifth-star}}'></i>
+      </h3>
     </script>
   </head>
 
@@ -25,9 +35,9 @@
   <input id="search-bar" type="text" name="search" value="" placeholder="Cerca il film">
   <button id="search-btn" type="button" name="button">CERCA</button>
 
-  <ul id="movies-list">
+  <div id="movies-list">
 
-  </ul>
+  </div>
 
 
   <script type="text/javascript" src="js/script.js"></script>
