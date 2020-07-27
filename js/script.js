@@ -153,33 +153,30 @@ function addStars(whatSearch) {
 }
 function addFlags(whatSearch) {
 
-
   whatSearch.each(function() {
 
     var language = $(this).data("language");
     console.log(language);
     var target = $(this).find('.flag');
 
-    if (language == "en") {
-      target.attr("src","img/uk_flag.png");
-    }
-    else if(language == "it") {
+    switch (language) {
+      case "en":
+        target.attr("src","img/uk_flag.png");
+        break;
+      case "it":
+        target.attr("src","img/italy_flag.png");
+        break;
+      case "ja":
+        target.attr("src","img/japan_flag.png");
+        break;
+      case "ko":
+        target.attr("src","img/korea_flag.png");
+        break;
 
-      target.attr("src","img/italy_flag.png");
-    }
-    else if (language == "ja") {
-
-    target.attr("src","img/japan_flag.png");
-    }
-    else if (language == "ko") {
-
-    target.attr("src","img/korea_flag.png");
-    }
-    else {
+      default:
       target.attr("src","img/earth_flag.jpg");
-      $(this).append("Unknown language")
+      $(this).append("Unknown language");
     }
-
   });
 }
 

@@ -10,6 +10,7 @@
     <script src= "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/js/all.min.js"></script>
     <script id="movie-template" type="text/x-handlebars-template">
       <div class="movie" data-vote={{"vote_average"}} data-language={{original_language}} >
+      <img class="cover" src="https://image.tmdb.org/t/p/w342{{poster_path}}"></img>
       <h3>{{title}}</h3>
       <div>
         <span class="titolo originale">{{original_title}}</span><br>
@@ -21,6 +22,7 @@
 
     <script id="series-template" type="text/x-handlebars-template">
       <div class="serie" data-vote={{"vote_average"}} data-language={{original_language}} >
+      <img class="cover" src="https://image.tmdb.org/t/p/w342{{poster_path}}"></img>
       <h3>{{name}}</h3>
       <div>
         <span class="titolo originale">{{original_name}}</span><br>
