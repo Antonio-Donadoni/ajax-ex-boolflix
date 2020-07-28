@@ -38,7 +38,8 @@ function getMovie() {
       }
 
       var whatSearch= $('.movie');
-      addStars(whatSearch);
+      // addStars(whatSearch);
+      addStarZ(whatSearch);
       addFlags(whatSearch);
     },
 
@@ -75,7 +76,8 @@ function getSerie() {
          target.append(serieHTML);
        }
        var whatSearch = $('.serie');
-       addStars(whatSearch);
+       // addStars(whatSearch);
+       addStarZ(whatSearch);
        addFlags(whatSearch);
      },
 
@@ -88,71 +90,90 @@ function getSerie() {
 }
 
 
-function addStars(whatSearch) {
+// function addStars(whatSearch) {
+//
+//   whatSearch.each(function() {
+//
+//     var vote = $(this).data("vote");
+//     var template = $('#stars-template').html();
+//     var compiled = Handlebars.compile(template);
+//     var target = $(this).find('.rating');
+//
+//
+//     if (vote > 0 && vote <= 2) {
+//       var movieHTML = compiled({
+//         'first-star' : 'fas fa-star',
+//         'second-star' : 'far fa-star',
+//         'third-star' : 'far fa-star',
+//         'fourth-star' : 'far fa-star',
+//         'fifth-star' : 'far fa-star'
+//       });
+//       target.append(movieHTML);
+//     }
+//     if (vote > 2 && vote <= 4) {
+//       var movieHTML = compiled({
+//         'first-star' : 'fas fa-star',
+//         'second-star' : 'fas fa-star',
+//         'third-star' : 'far fa-star',
+//         'fourth-star' : 'far fa-star',
+//         'fifth-star' : 'far fa-star'
+//       });
+//       target.append(movieHTML);
+//     }
+//     if (vote > 4 && vote <= 6) {
+//       var movieHTML = compiled({
+//         'first-star' : 'fas fa-star',
+//         'second-star' : 'fas fa-star',
+//         'third-star' : 'fas fa-star',
+//         'fourth-star' : 'far fa-star',
+//         'fifth-star' : 'far fa-star'
+//       });
+//       target.append(movieHTML);
+//     }
+//     if (vote > 6 && vote <= 8) {
+//       var movieHTML = compiled({
+//         'first-star' : 'fas fa-star',
+//         'second-star' : 'fas fa-star',
+//         'third-star' : 'fas fa-star',
+//         'fourth-star' : 'fas fa-star',
+//         'fifth-star' : 'far fa-star'
+//       });
+//       target.append(movieHTML);
+//     }
+//
+//     if (vote > 8) {
+//       var movieHTML = compiled({
+//         'first-star' : 'fas fa-star',
+//         'second-star' : 'fas fa-star',
+//         'third-star' : 'fas fa-star',
+//         'fourth-star' : 'fas fa-star',
+//         'fifth-star' : 'fas fa-star'
+//       });
+//       target.append(movieHTML);
+//     }
+//
+//   });
+//
+// }
 
+function addStarZ(whatSearch) {
   whatSearch.each(function() {
-
     var vote = $(this).data("vote");
-    var template = $('#stars-template').html();
-    var compiled = Handlebars.compile(template);
     var target = $(this).find('.rating');
+    var i = 0;
+    var stars = 0;
+    while (i < vote) {
+      target.append("<i class='fas fa-star'></i>")
+      i = i + 2;
+      stars ++ ;
+    };
 
-
-    if (vote > 0 && vote <= 2) {
-      var movieHTML = compiled({
-        'first-star' : 'fas fa-star',
-        'second-star' : 'far fa-star',
-        'third-star' : 'far fa-star',
-        'fourth-star' : 'far fa-star',
-        'fifth-star' : 'far fa-star'
-      });
-      target.append(movieHTML);
+    for (var j = 0; j < (5 - stars); j++) {
+      target.append("<i class='far fa-star'></i>")
     }
-    if (vote > 2 && vote <= 4) {
-      var movieHTML = compiled({
-        'first-star' : 'fas fa-star',
-        'second-star' : 'fas fa-star',
-        'third-star' : 'far fa-star',
-        'fourth-star' : 'far fa-star',
-        'fifth-star' : 'far fa-star'
-      });
-      target.append(movieHTML);
-    }
-    if (vote > 4 && vote <= 6) {
-      var movieHTML = compiled({
-        'first-star' : 'fas fa-star',
-        'second-star' : 'fas fa-star',
-        'third-star' : 'fas fa-star',
-        'fourth-star' : 'far fa-star',
-        'fifth-star' : 'far fa-star'
-      });
-      target.append(movieHTML);
-    }
-    if (vote > 6 && vote <= 8) {
-      var movieHTML = compiled({
-        'first-star' : 'fas fa-star',
-        'second-star' : 'fas fa-star',
-        'third-star' : 'fas fa-star',
-        'fourth-star' : 'fas fa-star',
-        'fifth-star' : 'far fa-star'
-      });
-      target.append(movieHTML);
-    }
-
-    if (vote > 8) {
-      var movieHTML = compiled({
-        'first-star' : 'fas fa-star',
-        'second-star' : 'fas fa-star',
-        'third-star' : 'fas fa-star',
-        'fourth-star' : 'fas fa-star',
-        'fifth-star' : 'fas fa-star'
-      });
-      target.append(movieHTML);
-    }
-
   });
+};
 
-}
 function addFlags(whatSearch) {
 
   whatSearch.each(function() {
@@ -175,7 +196,7 @@ function addFlags(whatSearch) {
         break;
 
       default:
-      target.attr("src","img/earth_flag.jpg");
+      target.attr("src","img/earth_flag_red.png");
     }
   });
 }

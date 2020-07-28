@@ -22,9 +22,16 @@ main {
   padding: 0 10%;
 }
 
+h2 {
+  margin-top: 15px;
+  margin-bottom: 30px;
+  font-size: 1.5rem;
+}
+
 #movies-list, #series-list {
   display: flex;
   overflow-x: auto;
+  background-color: #111;
 }
 
 
@@ -33,8 +40,8 @@ main {
 }
 
 .flag {
-  width: 100px;
-  height: 50px;
+  width: 60px;
+  height: 25px;
 }
 
 .movie, .serie {

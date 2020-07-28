@@ -15,7 +15,7 @@
       <div class="credits">
         <h3>{{title}}</h3>
         <span class="titolo originale">Titolo originale: {{original_title}}</span><br>
-        <span class="rating"></span>
+        <div class="rating"></div>
         <span>Lingua: </span>
         <img class="flag" src="" alt="Lingua">
         <p class="overview">{{overview}}</p>
@@ -28,7 +28,7 @@
       <div class="credits">
         <h3>{{name}}</h3>
         <span class="titolo originale">Titolo originale: {{original_name}}</span><br>
-        <span class="rating"></span>
+        <div class="rating"></div>
         <span>Lingua: </span>
         <img class="flag" src=" " alt="Lingua">
         <p class="overview">{{overview}}</p>
@@ -37,7 +37,7 @@
     </script>
 
 
-    <script id="stars-template" type="text/x-handlebars-template">
+    <!-- <script id="stars-template" type="text/x-handlebars-template">
       <h3>VOTO:
          <i class='{{first-star}}'></i>
          <i class='{{second-star}}'></i>
@@ -45,7 +45,8 @@
          <i class='{{fourth-star}}'></i>
          <i class='{{fifth-star}}'></i>
       </h3>
-    </script>
+    </script> -->
+
   </head>
 
   <body>
@@ -53,7 +54,7 @@
       <img src="img/logo.png" alt="">
       <div class="">
         <input id="search-bar" type="text" name="search" value="" placeholder="Cerca il film">
-        <button id="search-btn" type="button" name="button">CERCA</button>
+        <button id="search-btn" type="button" name="button"><i class="fas fa-search"></i></button>
       </div>
     </header>
 
