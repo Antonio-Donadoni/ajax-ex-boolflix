@@ -2,8 +2,11 @@
 function addClickButtonListener() {
   var target = $("#search-btn");
   target.click(function() {
+
   getMovie();
   getSerie();
+
+  $("#search-bar").val(" ");
  });
 
 }
@@ -12,7 +15,6 @@ function addClickButtonListener() {
 function getMovie() {
  $('#movies-list').html(" ");
  var query = $("#search-bar").val();
-
   $.ajax ({
    url : 'https://api.themoviedb.org/3/search/movie',
    method : 'GET',
@@ -90,7 +92,7 @@ function addStars(whatSearch) {
 
   whatSearch.each(function() {
 
-    var vote = $(this).data("vote")
+    var vote = $(this).data("vote");
     var template = $('#stars-template').html();
     var compiled = Handlebars.compile(template);
     var target = $(this).find('.rating');
@@ -156,7 +158,6 @@ function addFlags(whatSearch) {
   whatSearch.each(function() {
 
     var language = $(this).data("language");
-    console.log(language);
     var target = $(this).find('.flag');
 
     switch (language) {
@@ -175,7 +176,6 @@ function addFlags(whatSearch) {
 
       default:
       target.attr("src","img/earth_flag.jpg");
-      $(this).append("Unknown language");
     }
   });
 }

@@ -8,26 +8,30 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.6/handlebars.min.js"></script>
     <link rel="stylesheet" href="css/main.css">
     <script src= "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/js/all.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Martel+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+
     <script id="movie-template" type="text/x-handlebars-template">
-      <div class="movie" data-vote={{"vote_average"}} data-language={{original_language}} >
-      <img class="cover" src="https://image.tmdb.org/t/p/w342{{poster_path}}"></img>
-      <h3>{{title}}</h3>
-      <div>
-        <span class="titolo originale">{{original_title}}</span><br>
+      <div style="background-image: url(https://image.tmdb.org/t/p/w342{{poster_path}});" class="movie" data-vote={{"vote_average"}} data-language={{original_language}} >
+      <div class="credits">
+        <h3>{{title}}</h3>
+        <span class="titolo originale">Titolo originale: {{original_title}}</span><br>
         <span class="rating"></span>
-        <img class="flag" src="" alt="">
+        <span>Lingua: </span>
+        <img class="flag" src="" alt="Lingua">
+        <p class="overview">{{overview}}</p>
       </div>
      </div>
     </script>
 
     <script id="series-template" type="text/x-handlebars-template">
-      <div class="serie" data-vote={{"vote_average"}} data-language={{original_language}} >
-      <img class="cover" src="https://image.tmdb.org/t/p/w342{{poster_path}}"></img>
-      <h3>{{name}}</h3>
-      <div>
-        <span class="titolo originale">{{original_name}}</span><br>
+      <div style="background-image: url('https://image.tmdb.org/t/p/w342{{poster_path}}'), url('../img/no_photo.jpg');" class="serie" data-vote={{"vote_average"}} data-language={{original_language}} >
+      <div class="credits">
+        <h3>{{name}}</h3>
+        <span class="titolo originale">Titolo originale: {{original_name}}</span><br>
         <span class="rating"></span>
-        <img class="flag" src="" alt="">
+        <span>Lingua: </span>
+        <img class="flag" src=" " alt="Lingua">
+        <p class="overview">{{overview}}</p>
       </div>
      </div>
     </script>
@@ -45,19 +49,20 @@
   </head>
 
   <body>
+    <header>
+      <img src="img/logo.png" alt="">
+      <div class="">
+        <input id="search-bar" type="text" name="search" value="" placeholder="Cerca il film">
+        <button id="search-btn" type="button" name="button">CERCA</button>
+      </div>
+    </header>
 
-  <input id="search-bar" type="text" name="search" value="" placeholder="Cerca il film">
-  <button id="search-btn" type="button" name="button">CERCA</button>
-  <h2>Film</h2>
-  <div id="movies-list">
-
-
-  </div>
-  <h2>Serie tv</h2>
-  <div id="series-list">
-
-
-  </div>
+  <main>
+    <h2>FILM</h2>
+    <div id="movies-list"></div>
+    <h2>SERIE TV</h2>
+    <div id="series-list"></div>
+  </main>
 
 
   <script type="text/javascript" src="js/script.js"></script>

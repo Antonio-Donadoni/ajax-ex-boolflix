@@ -1,0 +1,68 @@
+
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body{
+  font-family: 'Martel Sans', sans-serif;
+  background: #111;
+  color: #fff;
+}
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #111;
+  padding: 0 10% 10px 10%;
+}
+
+main {
+  padding: 0 10%;
+}
+
+#movies-list, #series-list {
+  display: flex;
+  overflow-x: auto;
+}
+
+
+.fa-star {
+  color: #f9c74f;
+}
+
+.flag {
+  width: 100px;
+  height: 50px;
+}
+
+.movie, .serie {
+  min-width: 340px;
+  height: 500px;
+  background-color: grey;
+  background-size: cover;
+  margin-right: 10px;
+  position: relative;
+}
+
+.credits {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  background: rgba(0, 0, 0, 0.8);
+  transition: opacity 0.3s;
+}
+
+.movie:hover .credits, .serie:hover .credits {
+  opacity: 1;
+}
+.credits .overview {
+  display: -webkit-box;
+  -webkit-line-clamp: 10;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
