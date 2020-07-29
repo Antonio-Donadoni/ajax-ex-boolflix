@@ -16,43 +16,36 @@
         <h3>{{title}}</h3>
         <span class="titolo originale">Titolo originale: {{original_title}}</span><br>
         <div class="rating"></div>
-        <span>Lingua: </span>
-        <img class="flag" src="" alt="Lingua">
+        <div class="lang-container">
+          <span>Lingua: </span>
+          <img class="flag" src=" " alt="Lingua">
+        </div>
         <p class="overview">{{overview}}</p>
       </div>
      </div>
     </script>
 
     <script id="series-template" type="text/x-handlebars-template">
-      <div style="background-image: url('https://image.tmdb.org/t/p/w342{{poster_path}}'), url('../img/no_photo.jpg');" class="serie" data-vote={{"vote_average"}} data-language={{original_language}} >
+      <div style="background-image: url('https://image.tmdb.org/t/p/w342{{poster_path}}')" class="serie" data-vote={{"vote_average"}} data-language={{original_language}} >
       <div class="credits">
         <h3>{{name}}</h3>
         <span class="titolo originale">Titolo originale: {{original_name}}</span><br>
         <div class="rating"></div>
-        <span>Lingua: </span>
-        <img class="flag" src=" " alt="Lingua">
+        <div class="lang-container">
+          <span>Lingua: </span>
+          <img class="flag" src=" " alt="Lingua">
+        </div>
         <p class="overview">{{overview}}</p>
       </div>
      </div>
     </script>
-
-
-    <!-- <script id="stars-template" type="text/x-handlebars-template">
-      <h3>VOTO:
-         <i class='{{first-star}}'></i>
-         <i class='{{second-star}}'></i>
-         <i class='{{third-star}}'></i>
-         <i class='{{fourth-star}}'></i>
-         <i class='{{fifth-star}}'></i>
-      </h3>
-    </script> -->
 
   </head>
 
   <body>
     <header>
       <img src="img/logo.png" alt="">
-      <div class="">
+      <div class="search-nav">
         <input id="search-bar" type="text" name="search" value="" placeholder="Cerca il film">
         <button id="search-btn" type="button" name="button"><i class="fas fa-search"></i></button>
       </div>

@@ -38,8 +38,7 @@ function getMovie() {
       }
 
       var whatSearch= $('.movie');
-      // addStars(whatSearch);
-      addStarZ(whatSearch);
+      addStars(whatSearch);
       addFlags(whatSearch);
     },
 
@@ -75,9 +74,9 @@ function getSerie() {
          var serieHTML = compiled(serie);
          target.append(serieHTML);
        }
+
        var whatSearch = $('.serie');
-       // addStars(whatSearch);
-       addStarZ(whatSearch);
+       addStars(whatSearch);
        addFlags(whatSearch);
      },
 
@@ -90,86 +89,18 @@ function getSerie() {
 }
 
 
-// function addStars(whatSearch) {
-//
-//   whatSearch.each(function() {
-//
-//     var vote = $(this).data("vote");
-//     var template = $('#stars-template').html();
-//     var compiled = Handlebars.compile(template);
-//     var target = $(this).find('.rating');
-//
-//
-//     if (vote > 0 && vote <= 2) {
-//       var movieHTML = compiled({
-//         'first-star' : 'fas fa-star',
-//         'second-star' : 'far fa-star',
-//         'third-star' : 'far fa-star',
-//         'fourth-star' : 'far fa-star',
-//         'fifth-star' : 'far fa-star'
-//       });
-//       target.append(movieHTML);
-//     }
-//     if (vote > 2 && vote <= 4) {
-//       var movieHTML = compiled({
-//         'first-star' : 'fas fa-star',
-//         'second-star' : 'fas fa-star',
-//         'third-star' : 'far fa-star',
-//         'fourth-star' : 'far fa-star',
-//         'fifth-star' : 'far fa-star'
-//       });
-//       target.append(movieHTML);
-//     }
-//     if (vote > 4 && vote <= 6) {
-//       var movieHTML = compiled({
-//         'first-star' : 'fas fa-star',
-//         'second-star' : 'fas fa-star',
-//         'third-star' : 'fas fa-star',
-//         'fourth-star' : 'far fa-star',
-//         'fifth-star' : 'far fa-star'
-//       });
-//       target.append(movieHTML);
-//     }
-//     if (vote > 6 && vote <= 8) {
-//       var movieHTML = compiled({
-//         'first-star' : 'fas fa-star',
-//         'second-star' : 'fas fa-star',
-//         'third-star' : 'fas fa-star',
-//         'fourth-star' : 'fas fa-star',
-//         'fifth-star' : 'far fa-star'
-//       });
-//       target.append(movieHTML);
-//     }
-//
-//     if (vote > 8) {
-//       var movieHTML = compiled({
-//         'first-star' : 'fas fa-star',
-//         'second-star' : 'fas fa-star',
-//         'third-star' : 'fas fa-star',
-//         'fourth-star' : 'fas fa-star',
-//         'fifth-star' : 'fas fa-star'
-//       });
-//       target.append(movieHTML);
-//     }
-//
-//   });
-//
-// }
-
-function addStarZ(whatSearch) {
+function addStars(whatSearch) {
   whatSearch.each(function() {
     var vote = $(this).data("vote");
     var target = $(this).find('.rating');
-    var i = 0;
-    var stars = 0;
-    while (i < vote) {
-      target.append("<i class='fas fa-star'></i>")
-      i = i + 2;
-      stars ++ ;
-    };
 
-    for (var j = 0; j < (5 - stars); j++) {
-      target.append("<i class='far fa-star'></i>")
+    var stars = Math.ceil(vote / 2);
+    for (var j = 0; j < 5 ; j++) {
+      if( j < stars) {
+        target.append("<i class='fas fa-star'></i>")
+      } else {
+        target.append("<i class='far fa-star'></i>")
+      }
     }
   });
 };
