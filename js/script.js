@@ -38,6 +38,8 @@ function getMovie() {
       var whatSearch= $('.movie');
       addStars(whatSearch);
       addFlags(whatSearch);
+      var type = "movie";
+      addActors(whatSearch, type);
     },
 
    error: function(request, state, error) {
@@ -76,6 +78,8 @@ function getSerie() {
       var whatSearch = $('.serie');
       addStars(whatSearch);
       addFlags(whatSearch);
+      var type = "tv";
+      addActors(whatSearch, type);
     },
 
     error: function(request, state, error) {
@@ -128,9 +132,43 @@ function addFlags(whatSearch) {
       target.attr("src","img/earth_flag_red.png");
     }
   });
-}
+};
 
+function addActors(whatSearch, type) {
 
+  whatSearch.each(function() {
+    var id =  $(this).data("id");
+    var target =$(this).find('.cast-list');
+
+    $.ajax ({
+      url : 'https://api.themoviedb.org/3/' + type + '/'+ id +'/credits',
+      method : 'GET',
+      data : {
+       'api_key': '8a9865f75eca2ef944ceabef50501298'
+       },
+
+      success: function(data) {
+        var movieCast = data["cast"];
+
+        if (movieCast != "") {
+          for (var i = 0; i < 5 && i < movieCast.length; i++) {
+             var actor = movieCast[i].name;
+             target.append('<li>' + actor + '</li>');
+           }
+        }
+        else {
+          target.append('NON DISPONIBILE')
+        }
+       },
+
+      error: function(request, state, error) {
+        console.log('request' , request);
+        console.log('state' , state);
+        console.log('error' , error);
+       }
+     });
+  });
+};
 
 function init() {
 addClickButtonListener();

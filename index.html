@@ -17,7 +17,7 @@
       {{else}}
       url('img/no_photo.jpg');
       {{/if}}
-      " class="movie" data-vote={{"vote_average"}} data-language={{original_language}} >
+      " class="movie" data-vote={{"vote_average"}} data-language={{original_language}} data-id={{id}} >
       <div class="credits">
         <h3>{{title}}</h3>
         <span class="titolo originale">Titolo originale: {{original_title}}</span><br>
@@ -27,6 +27,10 @@
           <img class="flag" src=" " alt="Lingua">
         </div>
         <p class="overview">{{overview}}</p>
+        <h3>CAST:</h3>
+          <ul class= cast-list>
+
+          </ul>
       </div>
      </div>
     </script>
@@ -38,7 +42,7 @@
       {{else}}
       url('img/no_photo.jpg');
       {{/if}}
-       " class="serie" data-vote={{"vote_average"}} data-language={{original_language}} >
+       " class="serie" data-vote={{"vote_average"}} data-language={{original_language}} data-id={{id}} >
       <div class="credits">
         <h3>{{name}}</h3>
         <span class="titolo originale">Titolo originale: {{original_name}}</span><br>
@@ -48,6 +52,10 @@
           <img class="flag" src=" " alt="Lingua">
         </div>
         <p class="overview">{{overview}}</p>
+        <h3>CAST:</h3>
+          <ul class= cast-list>
+
+          </ul>
       </div>
      </div>
     </script>
