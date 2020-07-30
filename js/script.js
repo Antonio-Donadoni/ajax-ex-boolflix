@@ -40,6 +40,7 @@ function getMovie() {
       addFlags(whatSearch);
       var type = "movie";
       addActors(whatSearch, type);
+      addGenres(whatSearch, type);
     },
 
    error: function(request, state, error) {
@@ -80,6 +81,7 @@ function getSerie() {
       addFlags(whatSearch);
       var type = "tv";
       addActors(whatSearch, type);
+      addGenres(whatSearch, type);
     },
 
     error: function(request, state, error) {
@@ -170,7 +172,48 @@ function addActors(whatSearch, type) {
   });
 };
 
+function addGenres(whatSearch, type) {
+
+    whatSearch.each(function() {
+      var id =  $(this).data("id");
+      var target =$(this).find('.genre-list');
+
+      $.ajax ({
+        url : 'https://api.themoviedb.org/3/' + type + '/'+ id,
+        method : 'GET',
+        data : {
+         'api_key': '8a9865f75eca2ef944ceabef50501298',
+         'language': 'it-IT'
+         },
+
+        success: function(data) {
+          var genres = data["genres"];
+          console.log(genres);
+
+          if (genres != "") {
+            for (var i = 0; i < genres.length && i < 5; i++) {
+               var genre = genres[i].name;
+               target.append('<li>' + genre + '</li>');
+             }
+          }
+          else {
+            target.append('NON DISPONIBILE')
+          }
+         },
+
+        error: function(request, state, error) {
+          console.log('request' , request);
+          console.log('state' , state);
+          console.log('error' , error);
+         }
+       });
+    });
+
+
+}
+
 function init() {
 addClickButtonListener();
 }
+
 $( document ).ready(init);

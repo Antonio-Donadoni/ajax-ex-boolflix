@@ -59,6 +59,7 @@ header button {
 #movies-list, #series-list {
   display: flex;
   overflow-x: auto;
+  overflow-y: hidden;
   background-color: #111;
 }
 
@@ -108,4 +109,14 @@ header button {
   -webkit-line-clamp: 5;
   -webkit-box-orient: vertical;
   overflow: hidden;
+}
+
+.cast-list, .genre-list {
+  list-style-type: none;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.cast-list li, .genre-list li {
+  margin-right: 15px;
 }
