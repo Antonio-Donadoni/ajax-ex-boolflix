@@ -7,26 +7,25 @@ function addClickButtonListener() {
   getSerie();
 
   $("#search-bar").val(" ");
- });
-
+  });
 }
 
 
 function getMovie() {
  $('#movies-list').html(" ");
  var query = $("#search-bar").val();
-  $.ajax ({
+
+ $.ajax ({
    url : 'https://api.themoviedb.org/3/search/movie',
    method : 'GET',
    data : {
     'api_key': '8a9865f75eca2ef944ceabef50501298',
     'query': query,
     'language': "it-IT"
-   },
+    },
 
    success: function(data) {
      var moviesArray = data["results"];
-
      for (var i = 0; i < moviesArray.length; i++) {
 
         var movie = moviesArray[i];
@@ -36,7 +35,6 @@ function getMovie() {
         var movieHTML = compiled(movie);
         target.append(movieHTML);
       }
-
       var whatSearch= $('.movie');
       addStars(whatSearch);
       addFlags(whatSearch);
@@ -47,13 +45,14 @@ function getMovie() {
      console.log('state' , state);
      console.log('error' , error);
     }
- });
+  });
 };
+
 function getSerie() {
   $('#series-list').html(" ");
   var query = $("#search-bar").val();
 
-   $.ajax ({
+  $.ajax ({
     url : 'https://api.themoviedb.org/3/search/tv',
     method : 'GET',
     data : {
@@ -66,25 +65,24 @@ function getSerie() {
       var seriesArray = data["results"]
 
       for (var i = 0; i < seriesArray.length; i++) {
+        var serie = seriesArray[i];
+        var template = $('#series-template').html();
+        var compiled = Handlebars.compile(template);
+        var target = $('#series-list');
+        var serieHTML = compiled(serie);
+        target.append(serieHTML);
+      }
 
-         var serie = seriesArray[i];
-         var template = $('#series-template').html();
-         var compiled = Handlebars.compile(template);
-         var target = $('#series-list');
-         var serieHTML = compiled(serie);
-         target.append(serieHTML);
-       }
-
-       var whatSearch = $('.serie');
-       addStars(whatSearch);
-       addFlags(whatSearch);
-     },
+      var whatSearch = $('.serie');
+      addStars(whatSearch);
+      addFlags(whatSearch);
+    },
 
     error: function(request, state, error) {
       console.log('request' , request);
       console.log('state' , state);
       console.log('error' , error);
-     }
+    }
   });
 }
 
@@ -93,8 +91,8 @@ function addStars(whatSearch) {
   whatSearch.each(function() {
     var vote = $(this).data("vote");
     var target = $(this).find('.rating');
-
     var stars = Math.ceil(vote / 2);
+
     for (var j = 0; j < 5 ; j++) {
       if( j < stars) {
         target.append("<i class='fas fa-star'></i>")

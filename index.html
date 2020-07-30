@@ -11,7 +11,13 @@
     <link href="https://fonts.googleapis.com/css2?family=Martel+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
 
     <script id="movie-template" type="text/x-handlebars-template">
-      <div style="background-image: url(https://image.tmdb.org/t/p/w342{{poster_path}});" class="movie" data-vote={{"vote_average"}} data-language={{original_language}} >
+      <div style="background-image:
+      {{#if poster_path}}
+      url('https://image.tmdb.org/t/p/w342{{poster_path}}');
+      {{else}}
+      url('img/no_photo.jpg');
+      {{/if}}
+      " class="movie" data-vote={{"vote_average"}} data-language={{original_language}} >
       <div class="credits">
         <h3>{{title}}</h3>
         <span class="titolo originale">Titolo originale: {{original_title}}</span><br>
@@ -26,7 +32,13 @@
     </script>
 
     <script id="series-template" type="text/x-handlebars-template">
-      <div style="background-image: url('https://image.tmdb.org/t/p/w342{{poster_path}}')" class="serie" data-vote={{"vote_average"}} data-language={{original_language}} >
+      <div style="background-image:
+      {{#if poster_path}}
+      url('https://image.tmdb.org/t/p/w342{{poster_path}}');
+      {{else}}
+      url('img/no_photo.jpg');
+      {{/if}}
+       " class="serie" data-vote={{"vote_average"}} data-language={{original_language}} >
       <div class="credits">
         <h3>{{name}}</h3>
         <span class="titolo originale">Titolo originale: {{original_name}}</span><br>
