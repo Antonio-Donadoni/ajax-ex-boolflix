@@ -1,4 +1,36 @@
+// CREAZIONE SELECT
+function createGenreList() {
 
+ var target = $('#genre-selector');
+
+ $.ajax ({
+   url : 'https://api.themoviedb.org/3/genre/movie/list',
+   method : 'GET',
+   data : {
+    'api_key': '8a9865f75eca2ef944ceabef50501298',
+    'language': 'it-IT'
+    },
+
+   success: function(data) {
+     var genres = data["genres"];
+
+     for (var i = 0; i < genres.length; i++) {
+       var genreID = genres[i].id;
+       var genreName = genres[i].name;
+       target.append('<option value="'+ genreID + '">' + genreName + '</option>');
+        }
+    },
+
+   error: function(request, state, error) {
+     console.log('request' , request);
+     console.log('state' , state);
+     console.log('error' , error);
+    }
+  });
+
+}
+
+//FUNZIONI CLICK
 function addClickButtonListener() {
   var target = $("#search-btn");
   target.click(function() {
@@ -9,7 +41,6 @@ function addClickButtonListener() {
   $("#search-bar").val(" ");
   });
 }
-
 
 function getMovie() {
  $('#movies-list').html(" ");
@@ -50,7 +81,6 @@ function getMovie() {
     }
   });
 };
-
 function getSerie() {
   $('#series-list').html(" ");
   var query = $("#search-bar").val();
@@ -92,7 +122,6 @@ function getSerie() {
   });
 }
 
-
 function addStars(whatSearch) {
   whatSearch.each(function() {
     var vote = $(this).data("vote");
@@ -108,7 +137,6 @@ function addStars(whatSearch) {
     }
   });
 };
-
 function addFlags(whatSearch) {
 
   whatSearch.each(function() {
@@ -135,7 +163,6 @@ function addFlags(whatSearch) {
     }
   });
 };
-
 function addActors(whatSearch, type) {
 
   whatSearch.each(function() {
@@ -171,7 +198,6 @@ function addActors(whatSearch, type) {
      });
   });
 };
-
 function addGenres(whatSearch, type) {
 
     whatSearch.each(function() {
@@ -188,12 +214,12 @@ function addGenres(whatSearch, type) {
 
         success: function(data) {
           var genres = data["genres"];
-          console.log(genres);
 
           if (genres != "") {
             for (var i = 0; i < genres.length && i < 5; i++) {
                var genre = genres[i].name;
-               target.append('<li>' + genre + '</li>');
+               var genreID = genres[i].id;
+               target.append('<li data-genreID="' + genreID + '" >' + genre + '</li>');
              }
           }
           else {
@@ -212,8 +238,42 @@ function addGenres(whatSearch, type) {
 
 }
 
+// FUNZIONI SELECT GENRES
+function addChangeSelectListener() {
+  var selector = $("#genre-selector");
+  selector.change(function() {
+    var movie = $('.movie');
+    var serie = $('.serie');
+    selectGenre(selector, movie);
+    selectGenre(selector, serie);
+  });
+};
+function selectGenre(selector, type) {
+
+  var selectedGenre = parseInt(selector.val());
+  type.show();
+
+  if (selectedGenre != 0 ) {
+     type.each(function() {
+     var genresArray = [];
+
+     $(this).find(".genre-list li").each(function() {
+       var genreID = $(this).data("genreid");
+       genresArray.push(genreID);
+      });
+
+     var isGenreInArr = genresArray.includes(selectedGenre);
+     if (!(isGenreInArr)) {
+       $(this).hide();
+     }
+   });
+ };
+}
+
 function init() {
+createGenreList();
 addClickButtonListener();
+addChangeSelectListener();
 }
 
 $( document ).ready(init);
